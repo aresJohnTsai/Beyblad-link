@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戰鬥陀螺 8/14 抽選情報站</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --title-color: #58a6ff;
+            --accent-color: #238636;
+            --special-color: #a371f7;
+            --warning-color: #d29922;
+            --link-color: #8b949e;
+            --link-hover: #58a6ff;
+            --border-color: #30363d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        h1 {
+            color: var(--title-color);
+            margin: 0;
+            font-size: 2.2em;
+        }
+        p {
+            color: #8b949e;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+            border-color: var(--title-color);
+        }
+        .tab-btn.active {
+            background-color: rgba(35, 134, 54, 0.15);
+            border-color: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(35, 134, 54, 0.3);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .special-block {
+            margin-bottom: 40px;
+            border: 2px solid var(--special-color);
+            border-radius: 8px;
+            background-color: rgba(163, 113, 247, 0.05);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(163, 113, 247, 0.15);
+        }
+        .special-header {
+            background-color: rgba(163, 113, 247, 0.2);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--special-color);
+        }
+        .special-header h2 {
+            margin: 0;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .special-body {
+            padding: 20px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        #tab3 .card:hover {
+            border-color: var(--warning-color);
+        }
+        .card-header {
+            background-color: rgba(48, 54, 61, 0.5);
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.25em;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            background-color: var(--accent-color);
+            color: #fff;
+            font-size: 0.8em;
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+        #tab3 .badge {
+            background-color: var(--warning-color);
+        }
+        .special-badge {
+            background-color: var(--special-color);
+            color: #fff;
+            font-size: 0.7em;
+            padding: 3px 10px;
+            border-radius: 12px;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        
+        .region-label {
+            font-size: 1.05em;
+            color: var(--title-color);
+            margin: 15px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        .region-label:first-child {
+            margin-top: 0;
+        }
+        
+        .store-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .store-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .special-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .store-list a, .special-list a {
+            color: var(--link-color);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background-color: rgba(255,255,255,0.03);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .store-list a:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--link-hover);
+        }
+        .special-list a:hover {
+            background-color: rgba(163, 113, 247, 0.15);
+            color: #fff;
+        }
+        #tab3 .store-list a:hover {
+            background-color: rgba(210, 153, 34, 0.1);
+            color: #e3b341;
+        }
+        .line-id {
+            font-family: monospace;
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+        .link-icon {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+        .section-title {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin: 30px 0 20px 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>戰鬥陀螺 (Beyblade X) 8/14 抽選情報站</h1>
+            <p>分類整理各店鋪抽選連結，以及待公布店鋪快速跳轉入口</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('tab1')">已公布連結 (第一波)</button>
+            <button class="tab-btn" onclick="openTab('tab2')">已公布連結 (第二波)</button>
+            <button class="tab-btn" onclick="openTab('tab3')">待公布店鋪 (快速跳轉)</button>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+
+            <div class="special-block">
+                <div class="special-header">
+                    <h2>👑 台中中友店專區 <span class="special-badge">獨立開放時間：8/14 10:30 - 8/15 21:00</span></h2>
+                </div>
+                <div class="special-body">
+                    <ul class="special-list">
+                        <li><a href="https://lin.ee/X34nDmV" target="_blank"><span>UX-02 惡魔戰錘</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/qIAEluxn" target="_blank"><span>UX-11 衝擊龍神 豪華組</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/XdP3R9V" target="_blank"><span>UX-20 榮耀武神</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/ZeXNK9H" target="_blank"><span>UX-19 子彈獅鷲</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/VoHD4kS" target="_blank"><span>BX-50 天堂日輪 隨機強化組</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/x0voqcN" target="_blank"><span>CX-18 腕龍鞭打 隨機強化組</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/xJBbnbF" target="_blank"><span>BX-51 旋風發射器 黑綠</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/VpFRFkDs" target="_blank"><span>BX-35 隨機強化組Vol.04</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/9gcgJ8m" target="_blank"><span>BX-18 X旋風發射器</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        <li><a href="https://lin.ee/PSqxT8u" target="_blank"><span>BX-10 極限衝擊戰鬥盤</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 class="section-title">其他店鋪 (11:00 開放)</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-04 極限衝擊對戰組 <span class="badge">3 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/W5bEKMC1" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XsNiaE7" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tAUk1FI" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-15 鮫鯊狂鱗改造組 <span class="badge">5 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/8SY4dUZ" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5GSJ2ntk" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6cfyglA" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/QuqFRKQ" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/sPr8CS3" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-03 魔導神杖 <span class="badge">10 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/nnSrqFM" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7rSRe0u" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RBcUcMq" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/rMdJLRA" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/6PPtMOz" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RGFc40O" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/PWKYUx2" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/veBlY3L" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/5XsG8Fv" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/P19tWnl" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-20 榮耀武神 <span class="badge">20 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/SxgkKlX" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/xWbJid1" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/u5AWKfL" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8WJ19qT" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Nyz62Pf" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5pAirQR" target="_blank"><span>大葉高島屋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8x85xwE" target="_blank"><span>南港潤泰</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wDAZFkC" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Y0CZARe" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/8CFT1EB" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/oHI0F8Sp" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/UjyFvui" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/qxKNLOft" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/P0tvCDt" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Usai0eM" target="_blank"><span>廣三SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/64zDHcE" target="_blank"><span>台中lalaport</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTM07H271FM0ZNN2590VZ7F?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZQWYA3F6CWXFFYXCYT39XSD?q=timeline_post" target="_blank"><span>台南新天地</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/YWpQL70" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tnl6rbG" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-11 衝擊龍神 豪華組 <span class="badge">37 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/W33Gmx7" target="_blank"><span>三越站前店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/un9K0io" target="_blank"><span>淡水禮萊店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VFZxpOa" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/uSnrvC3" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/SP9Wcrm" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/V9SIcqL" target="_blank"><span>中和環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/UGEZcQF" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9SwTYxh" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/so0SFO4" target="_blank"><span>天母SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/PcgKwKl" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/t8piCymu" target="_blank"><span>信義A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/S8gVowh" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/SCJn6sj" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/oDYlc3w" target="_blank"><span>忠孝SOGO</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/PdK4NKp" target="_blank"><span>桃園站前三越</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/R9cTi74" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/OADNMIt" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VFcMKBr" target="_blank"><span>中壢大江店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sMx6eg0" target="_blank"><span>新竹遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qddrCeA" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/98rOHCL" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/8169qO2" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Q37QLQso" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/QW4Y9Pep" target="_blank"><span>豐原太平洋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/rkSx78g" target="_blank"><span>麗寶一期店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/z2Cmynu" target="_blank"><span>台中港三井店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RWshREF" target="_blank"><span>來玩聚 員林店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/TdjV23p" target="_blank"><span>嘉義遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/nJOidrY" target="_blank"><span>嘉義三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/QwoX3EQ" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/St3vmNt" target="_blank"><span>高雄漢神店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NZ6SoQZ" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wzxwAXR" target="_blank"><span>漢神巨蛋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/nnpbXCV" target="_blank"><span>夢時代店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yM5i3cZ" target="_blank"><span>高雄大立店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/66gqK3R" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/644SsQg" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-19 子彈獅鷲 <span class="badge">39 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/QRCmcpm" target="_blank"><span>三越站前店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yMszF5k" target="_blank"><span>淡水禮萊店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/T2bEIzk" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/v4trhZL" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/PPNWSfI" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Po4u9wG" target="_blank"><span>中和環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/PxiTX1C" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/w8ZjMI8" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yvOEgMw" target="_blank"><span>天母SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vrb4aMXE" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/r6FyWMx" target="_blank"><span>信義A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/O1PImGR" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RL2Vo3g" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sglHnh8" target="_blank"><span>忠孝SOGO</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/6iHefzX" target="_blank"><span>桃園站前三越</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RX4k4ij" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/V7GfArn" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NgZEMrjy" target="_blank"><span>中壢大江店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VXhbIyQ" target="_blank"><span>新竹遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/OVqGUEW" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/WMOFfUu" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/nx5q202" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/od3xirT" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/SYsvef6" target="_blank"><span>豐原太平洋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/S3tRLNa" target="_blank"><span>麗寶一期店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/t5A3V4s" target="_blank"><span>台中港三井店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/pG35zhF" target="_blank"><span>來玩聚 員林店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8DOfV8m" target="_blank"><span>來玩聚 彰化店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/5SqvHlX" target="_blank"><span>嘉義遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yLHprMI" target="_blank"><span>嘉義三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTKQ0Y2X1M0CRZB59DWRG7H?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/ocO2EBw" target="_blank"><span>高雄漢神店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/nfzrVbl" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/OWrOU0l" target="_blank"><span>漢神巨蛋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7KsxPVq" target="_blank"><span>夢時代店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RDrpzb3" target="_blank"><span>屏東環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qHVnTsq" target="_blank"><span>高雄大立店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Z2SUNVM" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/z9LZYIS" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-35 隨機強化組Vol.04 <span class="badge">20 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/r45TwUL" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/70WNYlU" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/raidRYT" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/OmQrR2U" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZUCJlNm" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XsWcHe0" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/zOHJkPp" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vLONMIL" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/ZJ0rDgY" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sMQHkx4" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/QF0Fec8" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/9iTOtzs" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qmaiy7L" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9noybEI" target="_blank"><span>廣三SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vHDsfeY" target="_blank"><span>台中lalaport</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RMXD6NB" target="_blank"><span>來玩聚 彰化店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTGWFBQ9V75KKC6VYEFHF24?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZQXSGB891XEQ5CZPXXQNH6K?q=timeline_post" target="_blank"><span>台南新天地</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/zE9PhwS" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Xi0tP26" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>CX-18 腕龍鞭打 隨機強化組 <span class="badge">37 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/7OSjTU8" target="_blank"><span>三越站前店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/53hCDci" target="_blank"><span>淡水禮萊店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NtFuHWh" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZGNxXKa" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yaUTe6D" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/pTmfRLq" target="_blank"><span>中和環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9r6pSFt" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/s7WA6YG" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RNL9cuJ" target="_blank"><span>天母SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/oCcfmCI" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/tS7tmNQ" target="_blank"><span>信義A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9lbDLNt" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sWSupJhx" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wMx1ZAb" target="_blank"><span>忠孝SOGO</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/7yCEQXm" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/zTGAh6A" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/R6vmETY" target="_blank"><span>中壢大江店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/t8jv8hW" target="_blank"><span>新竹遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/oUOPYWE" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9tfSzLs" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/6k1LWCe" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sMhU2Lw" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7kEssfp" target="_blank"><span>豐原太平洋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NyKAVFP" target="_blank"><span>麗寶一期店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/R8okvob" target="_blank"><span>台中港三井店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sodek23" target="_blank"><span>來玩聚 員林店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/qXcFheX" target="_blank"><span>嘉義遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/URn1rgs" target="_blank"><span>嘉義三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTHF81136M3HRCBXMHYSY6F?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/VCTgf2H" target="_blank"><span>高雄漢神店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/N5nYpvj" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/O3KbaiO" target="_blank"><span>漢神巨蛋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/uA73h5c" target="_blank"><span>夢時代店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qjvuWuS" target="_blank"><span>屏東環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Vi0B5s4" target="_blank"><span>高雄大立店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/WP2UBar" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/TzkXW6L" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-50 天堂日輪 隨機強化組 <span class="badge">18 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/SpOYVuc" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/pRzHlnS" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XWdoQCe" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qkKOG2K" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qA8b3zA" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VwWUmoh" target="_blank"><span>大葉高島屋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7wA4qbm" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/9b7AxWe" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8zB7b2l" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/thSIeaC" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5ZFs9zR" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/SoziqGK" target="_blank"><span>廣三SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Oti5F2K" target="_blank"><span>台中lalaport</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTKST9GXSVEH8YZB79H9983?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZQWMY5AJMAFHDPNX88KJKXQ?q=timeline_post" target="_blank"><span>台南新天地</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ymb0Xja" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/NRYllUB" target="_blank"><span>屏東環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/oBtD97n" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-02 惡魔戰錘 <span class="badge">35 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/rtVvgHz" target="_blank"><span>三越站前店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZpCmLX2" target="_blank"><span>淡水禮萊店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6ShLQv7" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5iwoxJo" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/upLHWbx" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NUVnetM" target="_blank"><span>中和環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qZMc67Z" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/W4pSX5l" target="_blank"><span>天母SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/UbWwaW6" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/uszceB3" target="_blank"><span>信義A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/xbvgNYh" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wGzNk3Z" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/QGYO5mP" target="_blank"><span>忠孝SOGO</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/W05JtCVf" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/WMJ8Xbn" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qv0dMgk" target="_blank"><span>中壢大江店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vdfJoDC" target="_blank"><span>新竹遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6To92Rat" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8sZtHYl" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/zYJugQq" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/n0DZRve" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/pSKOwhq" target="_blank"><span>豐原太平洋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XcLOi7EU" target="_blank"><span>麗寶一期店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/WXXXQ56" target="_blank"><span>台中港三井店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/tgbnyOE" target="_blank"><span>台中lalaport</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9qUMnRY" target="_blank"><span>來玩聚 員林店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/SIfMjRwv" target="_blank"><span>嘉義遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/X32NGSS" target="_blank"><span>嘉義三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/olPfm4d" target="_blank"><span>高雄漢神店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yKApUM7T" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/YbAUGr1" target="_blank"><span>夢時代店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/twWALxs" target="_blank"><span>屏東環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Ybgv4uQ" target="_blank"><span>高雄大立店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/R46NOSh" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/PgcYJx1" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-10 極限衝擊戰鬥盤 <span class="badge">7 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/7L8IFRG" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sToTA9h" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Wuv0enE" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/zXwTJc8" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTD26VGV7AXEV50VEFGSZPN?q=timeline_post" target="_blank"><span>台南新天地</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/PBYr6Mq" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/QmLtuSo" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-18 X旋風發射器 <span class="badge">17 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/WiS52wJ" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/prw6cMO" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VHxnz5q" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5GNgIi5" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7EDLvX9" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/u7hkd8B" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/p3Um0dG" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/WHcDyE0" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/9ycCvqx" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Z0RW4x7" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/83fjGza" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/6QZCkXYt" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vcgatSf" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/QtJWjcT" target="_blank"><span>廣三SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/WFJAaov" target="_blank"><span>台中lalaport</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/pB0AJ3G" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/5Aet8Hb" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-20 蒼龍利刃改造組 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/n6AQnN78" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-40 發射器(酒紅) <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/p6YDnxo" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-51 旋風發射器 黑綠 <span class="badge">41 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/s5Lfj6E" target="_blank"><span>三越站前店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NdOCSNE" target="_blank"><span>淡水禮萊店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7WdZJbO" target="_blank"><span>樹林秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VB5YbWw" target="_blank"><span>汐止遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/R1lW57gl" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/9O8slTa" target="_blank"><span>中和環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qPZjRKJ" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RbbLw8K" target="_blank"><span>美麗華店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/xzcqCR3" target="_blank"><span>天母SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VOwEfwr" target="_blank"><span>宏匯廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/uRrAj1U" target="_blank"><span>大葉高島屋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RnZtfWH" target="_blank"><span>信義A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5HQbZlb" target="_blank"><span>天母三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/OlS5tS9" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/pqELDbA" target="_blank"><span>忠孝SOGO</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/O8iaIlz" target="_blank"><span>桃園站前三越</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/u8nWW4b" target="_blank"><span>新竹遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wCtgN3i" target="_blank"><span>新竹巨城店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/yXgMYMv" target="_blank"><span>中壢大江店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5A0BZOI" target="_blank"><span>新竹遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7asszcj" target="_blank"><span>竹北遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/riMegQU" target="_blank"><span>享平方店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tKB4PD7" target="_blank"><span>台中大遠百店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XtTeNAn" target="_blank"><span>新光三越台中中港店店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6aLDMvm" target="_blank"><span>豐原太平洋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XIuotX3" target="_blank"><span>麗寶一期店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NmyIR1H" target="_blank"><span>台中港三井店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VQ0Ff5O" target="_blank"><span>來玩聚 員林店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/uV0bDB4" target="_blank"><span>來玩聚 彰化店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/8Vc88sI" target="_blank"><span>嘉義遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/56F7DDR" target="_blank"><span>嘉義三越店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTKMD9TV5DAE70P756PEVRD?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/q24FUwa" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 高屏地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/RAMKYD2" target="_blank"><span>高雄漢神店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/prpHtPG" target="_blank"><span>屏東太平洋</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/n0Q8kzu" target="_blank"><span>漢神巨蛋店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8VFKL1I" target="_blank"><span>夢時代店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vckR7ws" target="_blank"><span>屏東環球店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/UTXY8y6" target="_blank"><span>高雄大立店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/rFKVS8l" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/RNzQxj4" target="_blank"><span>新店誠品店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>CX-05 隨機強化組 Vol.6 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Wp6QN20" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>CX-08 隨機強化組 Vol.7 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/VujwpVZ" target="_blank"><span>遠百信義A13</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>CX-17 隨機強化組 Vol.10 <span class="badge">4 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/7jo7OFc" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/TZe5ug1" target="_blank"><span>板橋遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://liff.line.me/1654883387-DxN9w07M/c/01KZTH13WTX4SEFF08648GSVBA?q=timeline_post" target="_blank"><span>台南遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 東部與外島地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/QFU5cEXp" target="_blank"><span>宜蘭新月店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-01 蒼龍爆刃 <span class="badge">2 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/rjLJ2ox" target="_blank"><span>板橋大遠百</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 雲嘉南地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/U8Oe09b" target="_blank"><span>台南南紡店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab2" class="tab-content">
+            <h2 class="section-title">最新公布店鋪</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-03 魔導神杖 <span class="badge">3 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/NG5w39U" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/wpeRznAq" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tdShv1F" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-20 榮耀武神 <span class="badge">9 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tSdq8R5" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/zirMyey" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8eYEV4N" target="_blank"><span>桃園遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VXnjAnH" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/udoKLGA" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/NtEYBgf" target="_blank"><span>台中遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/s6VpOHO" target="_blank"><span>文心秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/rd1i98r" target="_blank"><span>漢神洲際店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/zKLLYTT" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-11 衝擊龍神 豪華組 <span class="badge">7 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/vq0e5Zo" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/Sy6vfQy" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/zvsM0E7" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RfBB4A5" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/zT8VfM3" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/xLuWlHb" target="_blank"><span>漢神洲際店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/oQKUTVz" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-19 子彈獅鷲 <span class="badge">8 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/On0lkJD" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qQ7Z47w" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/ZLB2d8tY" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/YtiVet7" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/sDBTkyF" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/rwi2da03" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/x936O05" target="_blank"><span>漢神洲際店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/7FECasM" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-35 隨機強化組Vol.04 <span class="badge">8 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Vzha7sC" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/7b9hMFZ" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/VlgxPCT" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XD3mcUF" target="_blank"><span>桃園遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZmnBoIm" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/t9cngU8" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/TZPdkBq" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/nXYjtqX" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>CX-18 腕龍鞭打 隨機強化組 <span class="badge">6 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/nfRG1KW" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/TblygvE2" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/y7xF2mI" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/vXTq5mz" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZJbMDrF" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/SjQjuOH" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-50 天堂日輪 隨機強化組 <span class="badge">9 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/qWNUGZx" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/R55TxjQ" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/w4y3SdE" target="_blank"><span>桃園遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ZLfO7BP" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/qnXUWaM" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/8xEQ9nJu" target="_blank"><span>台中遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/RiY98Fe" target="_blank"><span>文心秀泰店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/NUqWa2Y" target="_blank"><span>漢神洲際店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Y64sphX" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>UX-02 惡魔戰錘 <span class="badge">7 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/xFnD21m" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/5aWlotc" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/YFSK53W" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/S1EeTFp" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6fD78YvM" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/VGnTWs8f" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/xAGSIr1" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-00 暴風天馬3-70RA <span class="badge">2 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/sxBt08H" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/Vwksjixl" target="_blank"><span>台中遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-18 X旋風發射器 <span class="badge">7 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/9unR6sc" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/XcOQinx" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tQCv6tQ" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8Kqzgc7" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/ymtmlAC" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/wd3ZMg9" target="_blank"><span>台中遠雄店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/n2Ocp8m" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>BX-51 旋風發射器 黑綠 <span class="badge">9 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="region-label">📍 北北基</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/riEEXuv" target="_blank"><span>三越南西店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/6nDDJsk" target="_blank"><span>比漾廣場店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 桃竹苗</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/uQGHAoj" target="_blank"><span>Box   中壢SOGO店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/SriDUj2J" target="_blank"><span>桃園遠東店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/YbE13Nt" target="_blank"><span>Toy 桃園環球A8店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/8VuRMoI" target="_blank"><span>Box   桃園環球A19店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                            <li><a href="https://lin.ee/wHa8AUq" target="_blank"><span>桃園台茂店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 中部地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/SjZlEc8" target="_blank"><span>漢神洲際店</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                        <h3 class="region-label">📍 其他地區</h3>
+                        <ul class="store-list">
+                            <li><a href="https://lin.ee/tUbLaFn" target="_blank"><span>LaLaport南港</span> <span class="link-icon">🔗 點擊抽選</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>北北基 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@924ngwfb" target="_blank"><span>南港LaLaport <span class="line-id">(@924ngwfb)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>桃竹苗 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@185vowmo" target="_blank"><span>苗栗尚順 <span class="line-id">(@185vowmo)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>中部地區 <span class="badge">1 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@hdg3289a" target="_blank"><span>台中新時代 <span class="line-id">(@hdg3289a)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>雲嘉南地區 <span class="badge">2 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@121nsdww" target="_blank"><span>嘉義耐斯 <span class="line-id">(@121nsdww)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@212isujx" target="_blank"><span>台南三井 <span class="line-id">(@212isujx)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>高屏地區 <span class="badge">6 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@204edsnm" target="_blank"><span>高雄大遠百 <span class="line-id">(@204edsnm)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@obz8096L" target="_blank"><span>高雄左營 <span class="line-id">(@obz8096L)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@845nallq" target="_blank"><span>崇光高雄 <span class="line-id">(@845nallq)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@777nkbeo" target="_blank"><span>義享天地 <span class="line-id">(@777nkbeo)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@bxd6822t" target="_blank"><span>義大二館 <span class="line-id">(@bxd6822t)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@fko7562c" target="_blank"><span>大魯閣新光 <span class="line-id">(@fko7562c)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>東部與外島地區 <span class="badge">3 店鋪</span></h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="store-list">
+                            <li><a href="https://line.me/R/ti/p/@ymc0892z" target="_blank"><span>花蓮遠東 <span class="line-id">(@ymc0892z)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@438glrqv" target="_blank"><span>台東秀泰 <span class="line-id">(@438glrqv)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                            <li><a href="https://line.me/R/ti/p/@185ybuaz" target="_blank"><span>澎坊商場 <span class="line-id">(@185ybuaz)</span></span> <span class="link-icon">💬 開啟 LINE</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated for GitHub Pages. 祝您手速超群、順利中選！</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(tabId) {
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            var btns = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("active");
+            }
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
